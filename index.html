@@ -1,1 +1,276 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OGYxMOD Prime | Key Unlock</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      color: white;
+      background:
+        radial-gradient(ellipse at top, #24104b 0%, transparent 55%),
+        #080812;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 390px;
+      padding: 30px 24px;
+      text-align: center;
+      border: 1px solid #773bff;
+      border-radius: 22px;
+      background: rgba(18, 15, 36, 0.96);
+      box-shadow: 0 0 35px #702cff30;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      color: #c5a4ff;
+      text-shadow: 0 0 15px #8b43ff;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #aaa3c5;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .status {
+      display: inline-block;
+      color: #c7a8ff;
+      border: 1px solid #6338a5;
+      background: #281747;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 12px;
+      margin-bottom: 22px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #792cff, #b34dff);
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      filter: brightness(1.15);
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      cursor: default;
+      opacity: 0.8;
+    }
+
+    #timer {
+      display: none;
+      font-size: 34px;
+      font-weight: bold;
+      color: #c59cff;
+      margin: 20px 0;
+    }
+
+    #keySection {
+      display: none;
+      margin-top: 22px;
+      text-align: left;
+    }
+
+    .label {
+      color: #a9a0c1;
+      font-size: 12px;
+      margin-bottom: 9px;
+    }
+
+    .key-box {
+      padding: 14px 10px;
+      border: 1px dashed #945bff;
+      background: #0c0a18;
+      border-radius: 10px;
+      text-align: center;
+      color: #d9c5ff;
+      font-size: 16px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+      margin-bottom: 15px;
+    }
+
+    .details {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .detail {
+      flex: 1;
+      padding: 14px 8px;
+      background: #211936;
+      border: 1px solid #382653;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .detail span {
+      display: block;
+      color: #aaa0c4;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .detail strong {
+      color: #d8c1ff;
+      font-size: 15px;
+    }
+
+    .copy-btn {
+      background: linear-gradient(90deg, #5624c9, #8839ed);
+    }
+
+    #message {
+      min-height: 18px;
+      margin-top: 12px;
+      color: #a9f6c6;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 25px;
+      padding-top: 17px;
+      border-top: 1px solid #302344;
+      font-size: 11px;
+      color: #827894;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="logo">𝐎𝐆𝐘𝐱𝐌𝐎𝐃 𝐏𝐫𝐢𝐦𝐞</div>
+    <p class="subtitle">PREMIUM KEY GENERATOR</p>
+
+    <div class="status">● KEY ACCESS PORTAL</div>
+
+    <button id="unlockBtn" onclick="unlockKey()">
+      🔓 Unlock Key
+    </button>
+
+    <div id="timer">5</div>
+
+    <section id="keySection">
+      <p class="label">YOUR ACTIVATION KEY</p>
+
+      <div class="key-box" id="keyText">
+        NEROHACK-1D-8320CA9
+      </div>
+
+      <div class="details">
+        <div class="detail">
+          <span>DEVICE</span>
+          <strong>1</strong>
+        </div>
+
+        <div class="detail">
+          <span>DURATION</span>
+          <strong>1 Day</strong>
+        </div>
+      </div>
+
+      <button class="copy-btn" onclick="copyKey()">
+        📋 Copy Key
+      </button>
+
+      <div id="message" aria-live="polite"></div>
+    </section>
+
+    <div class="footer">
+      © 2026 OGYxMOD Prime • All Rights Reserved
+    </div>
+  </main>
+
+  <script>
+    let isUnlocked = false;
+
+    function unlockKey() {
+      if (isUnlocked) return;
+
+      isUnlocked = true;
+
+      const btn = document.getElementById("unlockBtn");
+      const timer = document.getElementById("timer");
+      const keySection = document.getElementById("keySection");
+
+      btn.disabled = true;
+      btn.textContent = "⏳ Please wait...";
+      timer.style.display = "block";
+
+      let seconds = 5;
+      timer.textContent = seconds;
+
+      const countdown = setInterval(() => {
+        seconds--;
+        timer.textContent = seconds;
+
+        if (seconds <= 0) {
+          clearInterval(countdown);
+
+          timer.style.display = "none";
+          keySection.style.display = "block";
+
+          btn.textContent = "✓ Key Unlocked";
+          btn.style.background = "#273a30";
+          btn.style.color = "#a9f6c6";
+        }
+      }, 1000);
+    }
+
+    async function copyKey() {
+      const key = document.getElementById("keyText").textContent.trim();
+      const message = document.getElementById("message");
+
+      try {
+        await navigator.clipboard.writeText(key);
+        message.textContent = "✓ Key copied successfully!";
+      } catch (error) {
+        const field = document.createElement("textarea");
+        field.value = key;
+        field.style.position = "fixed";
+        field.style.opacity = "0";
+        document.body.appendChild(field);
+        field.select();
+
+        const copied = document.execCommand("copy");
+        field.remove();
+
+        message.textContent = copied
+          ? "✓ Key copied successfully!"
+          : "Please select and copy the key manually.";
+      }
+    }
+  </script>
+</body>
+</html>
